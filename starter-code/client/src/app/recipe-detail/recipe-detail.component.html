@@ -2,5 +2,24 @@ DETAIL VIEW
 <h1>{{recipe.name}}</h1>
 <p>{{recipe.description}}</p>
 <img [src]="recipe.image" width=100>
+<br> Ingredients:
 
+<ul *ngFor="let ingredient of recipe.ingredients">
+  <li>{{ingredient.ingredientId.name}} x{{ingredient.quantity}} </li>
+</ul>
+
+<br> Ingredients to add:
+<select #select>
+  <option *ngFor="let ingredient of ingredients" [value]="ingredient._id">
+    {{ingredient.name}}
+  </option>
+</select>
+
+
+<br> Add quantity:
+<input [(ngModel)]="quantity" value="" placeholder="1">
+<button (click)="addRecipe(select.value,recipe._id, quantity)">Add to recipe</button>
+
+<br>
+<br>
 <a [routerLink]="['']">HOME</a>

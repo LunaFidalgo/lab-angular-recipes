@@ -1,8 +1,19 @@
-
 <div *ngFor="let recipe of recipes">
   <h2>{{recipe.name}}</h2>
   <!-- <p>{{recipe.description}}</p> -->
   <img [src]="recipe.image" width=100>
-  <hr>
+
   <a [routerLink]="[recipe._id]">View detail</a>
+  <hr>
 </div>
+
+<form>
+  <p> Name
+    <input type="text" name="name" [(ngModel)]="name" required />
+  </p>
+  <p> Description
+    <input type="text" name="description" [(ngModel)]="description" required />
+  </p>
+  <button type="submit" (click)="addDish()"> Enviar </button>
+
+  </form>

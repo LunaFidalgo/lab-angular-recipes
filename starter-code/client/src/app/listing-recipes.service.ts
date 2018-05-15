@@ -18,4 +18,12 @@ export class ListingRecipesService {
       .get(`${this.BASE_URL}/dishes/${id}`)
       .map((res: Response) => res.json());
   }
+
+  addRecipe(name, description){
+    let recipe = {name, description}
+
+    return this.http
+    .post(`${this.BASE_URL}/dishes`, recipe)
+    .map((res: Response) => res.json());
+  }
 }
